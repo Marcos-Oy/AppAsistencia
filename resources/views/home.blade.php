@@ -3,9 +3,10 @@
 
 <div class="row">
 	<div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
-		<h3>Estadísticas</h3>
+		<h3>Te damos la bienvenida</h3>
 	  <link rel="stylesheet" type="text/css" href="css/Reloj/estilo.css">
-
+    <img src="img/Logo.png" class="img-fluid" alt="...">
+<!-- RELOJ
 	<div class="flex">
 		<div class="contenido">
 			<div class="reloj">
@@ -23,6 +24,6 @@
  
 	</div>
 </div>
-
+-->
 
 @endsection

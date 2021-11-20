@@ -21,18 +21,20 @@ Route::get('/acerca', function () {
 Route::auth();
 //RTUAS PRINCIPALES
 Route::get('/home', 'HomeController@index');
-Route::resource('almacen/categoria', 'CategoriaController');
-Route::resource('almacen/articulo', 'ArticuloController');
-Route::resource('ventas/cliente', 'ClienteController');
-Route::resource('compras/proveedor', 'ProveedorController');
-Route::resource('compras/ingreso', 'IngresoController');
-Route::resource('ventas/venta', 'VentaController');
-Route::resource('seguridad/usuario', 'UsuarioController');
-Route::resource('perdidas/perdida', 'PerdidaController');
+Route::resource('Actividades', 'ActividadesController');
+
+
+
+
+
+
 
 //RUTA PARA ACTIVAR
 Route::get('activar{id}', 'ArticuloController@activar');
-//REPORTES GENERALES
+
+
+
+//REPORTES GENERALES PDF
 Route::get('reportecategorias', 'CategoriaController@reporte');
 Route::get('reportearticulos', 'ArticuloController@reporte');
 Route::get('reporteperdidas', 'PerdidaController@reporte');

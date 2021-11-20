@@ -72,7 +72,7 @@ class UsuarioController extends Controller
 
 
 
-
+    //PARA EXPORTAR DATOS A PDF
     
     public function reporte()
     {

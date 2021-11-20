@@ -90,62 +90,59 @@
          
           <ul class="sidebar-menu">
             <li class="header"></li>
+
+
+
             <li id="liEscritorio">
               <a href="{{url('home')}}">
-                <i class="fa fa-bar-chart"></i><span>Home</span>
+                <i class="fa fa-home"></i><span>Home</span>
+                <small class="label pull-right bg-blue">Ir</small>
               </a>
             </li>
-
-
 
 
 
             @if($rol == 'Administrador' || $rol == 'Habilitador'||$rol == 'Docente')
-            <li id="liAlmacen" class="treeview">
-              <a href="#">
-                <i class="fa fa-archive"></i>
-                <span>Actividades</span>
-                <i class="fa fa-angle-left pull-right"></i>
-              </a>
-              <ul class="treeview-menu">
-              @if($rol == 'Administrador' || $rol == 'Habilitador'||$rol == 'Docente')
-                <li id="liCategorias"><a href="{{url('almacen/categoria')}}"><i class="fa fa-circle-o"></i> Actividades</a></li>
-                @endif
-              </ul>
-            </li>
-            @endif
-
-
-
-
-
-            @if($rol == 'Administrador' || $rol == 'Habilitador'||$rol == 'Docente')
-            <li id="liAcceso" class="treeview">
-              <a href="#">
-                <i class="fa fa-user"></i> <span>Usuarios</span>
-                <i class="fa fa-angle-left pull-right"></i>
-              </a>
-              <ul class="treeview-menu">
-                <li id="liUsuarios"><a href="{{url('seguridad/usuario')}}"><i class="fa fa-circle-o"></i> Registrar</a></li> 
-              </ul>
-            </li>
-            @endif
-
-
-
-
-
-
             <li>
-              <a href="{{url('acerca')}}">
-                <i class="fa fa-info-circle"></i> <span>Acerca De...</span>
-                <small class="label pull-right bg-yellow">IT</small>
+              <a href="{{url('#/#')}}">
+                <i class="fa fa-book"></i> <span>Actividades</span>
+                <small class="label pull-right bg-blue">Ir</small>
               </a>
             </li>
-             
+            @endif
             
 
 
+            @if($rol == 'Administrador' || $rol == 'Habilitador'||$rol == 'Docente')
+            <li>
+              <a href="{{url('#/#')}}">
+                <i class="fa fa-user"></i> <span>Personas</span>
+                <small class="label pull-right bg-blue">Ir</small>
+              </a>
+            </li>
+            @endif
+
+
+
+            @if($rol == 'Administrador' || $rol == 'Habilitador'||$rol == 'Docente')
+            <li>
+              <a href="{{url('#/#')}}">
+                <i class="fa fa-university"></i> <span>Establecimientos</span>
+                <small class="label pull-right bg-blue">Ir</small>
+              </a>
+            </li>
+            @endif
+
+
+
+            @if($rol == 'Administrador' || $rol == 'Habilitador'||$rol == 'Docente')
+            <li>
+              <a href="{{url('#/#')}}">
+                <i class="fa fa-money"></i> <span>Banco</span>
+                <small class="label pull-right bg-blue">Ir</small>
+              </a>
+            </li>
+            @endif
 
           </ul>
         </section>
@@ -195,7 +192,7 @@
       </div><!-- /.content-wrapper -->
       <!--Fin-Contenido-->
       <footer class="main-footer">
-        <strong>Copyright &copy; 2020 <a href="https://www.ipchile.cl/">El Club Pinturillo</a>.</strong> Todos los derechos reservados.
+        <strong>Copyright &copy; <a href="https://www.ipchile.cl/"> El Club Pinturillo</a>.</strong> Todos los derechos reservados.
       </footer>
 
       
