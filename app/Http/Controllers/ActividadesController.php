@@ -13,5 +13,5 @@ use DB;
 
 class ActividadesController extends Controller
 {
-    //
+    ///
 }
