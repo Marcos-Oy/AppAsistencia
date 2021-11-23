@@ -104,7 +104,7 @@
 
             @if($rol == 'Administrador' || $rol == 'Habilitador'||$rol == 'Docente')
             <li>
-              <a href="{{url('#/#')}}">
+              <a href="{{url('Actividades')}}">
                 <i class="fa fa-book"></i> <span>Actividades</span>
                 <small class="label pull-right bg-blue">Ir</small>
               </a>

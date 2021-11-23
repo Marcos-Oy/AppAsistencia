@@ -8,10 +8,10 @@ class User extends Authenticatable
 {
     protected $table='actividades';
 
-    protected $primaryKey='idactividades';
+    protected $primaryKey='id';
     
     protected $fillable = [
-        'user_userrut', 'Modalidad_idModalidad', 'Establecimiento_idEstablecimiento', 'Fecha', 'HoraInicio', 'HoraFin', 'Observaciones',
+        'asiste',
     ];
 
     protected $hidden = [
