@@ -20,13 +20,14 @@ class ActividadesController extends Controller
     }
     public function index(Request $request)
     {
-        $actividad = "Hola mundo";
-        if ($request) {
-            $query = trim($request->get('searchText'));
-            $actividad = DB::table('actividades')->where('asiste', 'LIKE', '%' . $query . '%')
-                ->orderBy('id', 'desc')
-                ->paginate(7);
-            return view('Actividades.index', ["Actividades" => $actividad, "searchText" => $query]);
+        if ($request)
+        {
+            $query=trim($request->get('searchText'));
+            $actividad=DB::table('actividades')
+            ->where('asiste','LIKE','%'.$query.'%')
+            ->orderBy('id','desc')
+            ->paginate(7);
+            return view('Actividades.index',["actividades"=>$actividad,"searchText"=>$query]);
         }
     }
 
