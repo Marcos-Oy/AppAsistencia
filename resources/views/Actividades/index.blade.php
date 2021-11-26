@@ -26,9 +26,8 @@
 				</thead>
                @foreach ($actividades as $acti)
 				<tr>
-					<td></td>
-					<td></td>
-                    <td></td>
+					<td>{{ $acti->id}}</td>
+					<td>{{ $acti->asiste}}</td>
 					<td>
 						<a href="{{URL::action('ActividadesController@edit',$acti->id)}}"><button class="btn btn-warning"><i class="fa fa-pencil-square-o" aria-hidden="true"> Editar</i></button></a>
                          <a href="" data-target="#modal-delete-{{$acti->id}}" data-toggle="modal"><button class="btn btn-danger"><i class="fa fa-trash-o" aria-hidden="true"> Eliminar</i></button></a>

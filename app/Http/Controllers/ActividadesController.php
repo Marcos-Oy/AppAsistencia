@@ -18,6 +18,8 @@ class ActividadesController extends Controller
     {
         $this->middleware('auth');
     }
+
+    //mostrar y buscar datos
     public function index(Request $request)
     {
         if ($request)
@@ -31,33 +33,45 @@ class ActividadesController extends Controller
         }
     }
 
+    //redirigir a create html
     public function create()
     {
         return view("Actividades.create");
     }
+
+    //insertar datos
     public function store(ActividadesFormRequest $request)
     {
-        $actividad = new User;       
-        $actividad->name = $request->get('asiste');
+        $actividad = new Actividades;       
+        $actividad->asiste = $request->get('asiste');
         $actividad->save();
         return Redirect::to('Actividades');
     }
 
+
+    //rederigir a actividad
     public function edit($id)
     {
-        return view("Actividades.edit", ["Actividades" => User::findOrFail($id)]);
+        return view("Actividades.edit", ["Actividades" => Actividades::findOrFail($id)]);
     }
+
+
+    //actualizar datos
     public function update(ActividadesFormRequest $request, $id)
     {
-        $actividad = User::findOrFail($id);
-        $actividad->name = $request->get('asiste');
+        $actividad = Actividades::findOrFail($id);
+        $actividad-> asiste = $request->get('asiste');
         $actividad->update();
-        return Redirect::to('Actividades.index');
+        return Redirect::to('Actividades');
     }
+
+
+
+    //ELIMINAR DATOS
     public function destroy($id)
     {
         $actividad = DB::table('Actividades')->where('id', '=', $id)->delete();
-        return Redirect::to('Actividades.index');
+        return Redirect::to('Actividades');
     }
 
 

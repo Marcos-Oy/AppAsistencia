@@ -2,13 +2,15 @@
 
 namespace sis_Inventario;
 
-use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Database\Eloquent\Model;
 
-class User extends Authenticatable
+class Actividades extends Model
 {
     protected $table='actividades';
 
     protected $primaryKey='id';
+
+    public $timestamps=false;
     
     protected $fillable = [
         'asiste',

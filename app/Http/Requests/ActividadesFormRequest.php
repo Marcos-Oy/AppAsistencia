@@ -24,7 +24,7 @@ class ActividadesFormRequest extends Request
     public function rules()
     {
         return [
-            'id'=>'required|max:100|regex:/^([A-Z][a-z]+([ ]?[a-z]?[-]?[A-Z][a-z]+)*)$/',
+            'id'=>'max:100|regex:/^([A-Z][a-z]+([ ]?[a-z]?[-]?[A-Z][a-z]+)*)$/',
             'asiste'=>'required|max:20',
         ];
     }
