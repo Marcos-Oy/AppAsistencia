@@ -13,7 +13,7 @@
 
 
         <div class="col-lg-12 col-sm-12 col-md-12 col-xs-12">
-            <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">,
+            <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
                 <label for="name" class="control-label">Usuario</label>
                 
                     <input id="user_id" type="text" class="form-control" name="user_id" value="{{$Actividades->user_id}}" placeholder="Usuario">
@@ -46,7 +46,7 @@
             <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
                 <label for="name" class="control-label">Fecha</label>
                 
-                    <input id="fecha" type="date" class="form-control" name="fecha" value="{{$Actividades->Fecha}}">
+                    <input id="Fecha" type="date" class="form-control" name="Fecha" value="{{$Actividades->Fecha}}">
                     @if ($errors->has('fecha'))
                     <span class="help-block">
                         <strong>{{ $errors->first('fecha') }}</strong>
@@ -56,18 +56,15 @@
             </div>
         </div>
 
-       
-
-
-
+        <h1><?php echo $Actividades->horaInicio ?></h1>
         <div class="col-lg-12 col-sm-12 col-md-12 col-xs-12">
             <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
                 <label for="name" class="control-label">Hora de Inicio</label>
                 
-                    <input id="horaInicio" type="time" class="form-control" name="horaInicio" value="{{$Actividades->horaInicio}}">
-                    @if ($errors->has('horaInicio'))
+                    <input id="HoraInicio" type="time" class="form-control" name="HoraInicio" value="{{$Actividades->HoraInicio}}">
+                    @if ($errors->has('HoraInicio'))
                     <span class="help-block">
-                        <strong>{{ $errors->first('horaInicio') }}</strong>
+                        <strong>{{ $errors->first('HoraInicio') }}</strong>
                     </span>
                     @endif
                 
@@ -78,10 +75,10 @@
             <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
                 <label for="name" class="control-label">Hora de termino</label>
                 
-                    <input id="horaFin" type="time" class="form-control" name="horaFin" value="{{$Actividades->horaFin}}">
-                    @if ($errors->has('horaFin'))
+                    <input id="HoraFin" type="time" class="form-control" name="HoraFin" value="{{$Actividades->HoraFin}}">
+                    @if ($errors->has('HoraFin'))
                     <span class="help-block">
-                        <strong>{{ $errors->first('horaFin') }}</strong>
+                        <strong>{{ $errors->first('HoraFin') }}</strong>
                     </span>
                     @endif
                 
@@ -94,7 +91,7 @@
             <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
                 <label for="name" class="control-label">Observaciones</label>
                 
-                    <input id="observaciones" type="text" class="form-control" name="observaciones" value="{{$Actividades->Observaciones}}" placeholder="Observaciones">
+                    <input id="Observaciones" type="text" class="form-control" name="Observaciones" value="{{$Actividades->Observaciones}}" placeholder="Observaciones">
                     @if ($errors->has('observaciones'))
                     <span class="help-block">
                         <strong>{{ $errors->first('observaciones') }}</strong>

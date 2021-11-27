@@ -13,7 +13,7 @@ class Actividades extends Model
     public $timestamps=false;
     
     protected $fillable = [
-        'user_id', 'establecimiento_id','Fecha', 'horaInicio', 'horaFin', 'Observaciones',
+        'user_id', 'establecimiento_id','Fecha', 'HoraInicio', 'HoraFin', 'Observaciones',
     ];
 
     protected $hidden = [

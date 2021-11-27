@@ -35,8 +35,8 @@
 					<td>{{ $acti->user_id}}</td>
 					<td>{{ $acti->establecimiento_id}}</td>
 					<td>{{ $acti->Fecha}}</td>
-					<td>{{ $acti->horaInicio}}</td>
-					<td>{{ $acti->horaFin}}</td>
+					<td>{{ $acti->HoraInicio}}</td>
+					<td>{{ $acti->HoraFin}}</td>
 					<td>{{ $acti->Observaciones}}</td>
 					<td>
 						<a href="{{URL::action('ActividadesController@edit',$acti->id)}}"><button class="btn btn-warning"><i class="fa fa-pencil-square-o" aria-hidden="true"> Editar</i></button></a>

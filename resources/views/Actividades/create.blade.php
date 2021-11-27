@@ -44,14 +44,14 @@
 
         <div class="form-group">
             <label for="nombre">Hora de inicio</label>
-            <input type="time" id="horaInicio" name="horaInicio" class="form-control">    
+            <input type="time" id="HoraInicio" name="HoraInicio" class="form-control">    
         </div>
 
 
 
         <div class="form-group">
             <label for="nombre">Hora de termino</label>
-            <input type="time" id="horaFin" name="horaFin" class="form-control">    
+            <input type="time" id="HoraFin" name="HoraFin" class="form-control">    
         </div>
 
 

@@ -26,13 +26,13 @@ class ActividadesController extends Controller
         {
             $query=trim($request->get('searchText'));
             $actividad=DB::table('actividades')
-            ->select('id', 'user_id', 'establecimiento_id', 'Fecha', 'horaInicio', 'horaFin', 'Observaciones')
+            ->select('id', 'user_id', 'establecimiento_id', 'Fecha', 'HoraInicio', 'HoraFin', 'Observaciones')
             ->where('id','LIKE','%'.$query.'%')
             ->where('user_id','LIKE','%'.$query.'%')
             ->where('establecimiento_id','LIKE','%'.$query.'%')
             ->where('Fecha','LIKE','%'.$query.'%')
-            ->where('horaInicio','LIKE','%'.$query.'%')
-            ->where('horaFin','LIKE','%'.$query.'%')
+            ->where('HoraInicio','LIKE','%'.$query.'%')
+            ->where('HoraFin','LIKE','%'.$query.'%')
             ->where('Observaciones','LIKE','%'.$query.'%')
             ->orderBy('id','desc')
             ->paginate(7);
@@ -54,10 +54,10 @@ class ActividadesController extends Controller
             $actividad = new Actividades;       
             $actividad -> user_id = $request->get('user_id');
             $actividad -> establecimiento_id = $request->get('establecimiento_id');
-            $actividad -> fecha = $request->get('Fecha');
-            $actividad -> horainicio = $request->get('horaInicio');
-            $actividad -> horafin = $request->get('horaFin');
-            $actividad -> observaciones = $request->get('Observaciones');
+            $actividad -> Fecha = $request->get('Fecha');
+            $actividad -> HoraInicio = $request->get('HoraInicio');
+            $actividad -> HoraFin = $request->get('HoraFin');
+            $actividad -> Observaciones = $request->get('Observaciones');
         
            
             $actividad -> save();
@@ -84,10 +84,10 @@ class ActividadesController extends Controller
         $actividad = Actividades::findOrFail($id);
         $actividad -> user_id = $request->get('user_id');
         $actividad -> establecimiento_id = $request->get('establecimiento_id');
-        $actividad -> fecha = $request->get('Fecha');
-        $actividad -> horainicio = $request->get('horaInicio');
-        $actividad -> horafin = $request->get('horaFin');
-        $actividad -> observaciones = $request->get('Observaciones');
+        $actividad -> Fecha = $request->get('Fecha');
+        $actividad -> HoraInicio = $request->get('HoraInicio');
+        $actividad -> HoraFin = $request->get('HoraFin');
+        $actividad -> Observaciones = $request->get('Observaciones');
         $actividad -> update();
         return Redirect::to('Actividades');
     }
