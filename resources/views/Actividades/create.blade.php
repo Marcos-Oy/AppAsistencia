@@ -20,10 +20,47 @@
 
         {!!Form::open(array('url'=>'Actividades','method'=>'POST','autocomplete'=>'off'))!!}
         {{Form::token()}}
+
         <div class="form-group">
-            	<label for="nombre">Asiste</label>
-            	<input type="text" id="asiste" name="asiste" class="form-control" placeholder="Asiste...">
-            </div>
+            <label for="nombre">Usuario</label>
+            <input type="text" id="user_id" name="user_id" class="form-control" placeholder="Usuario">    
+        </div>
+
+
+
+        <div class="form-group">
+            <label for="nombre">Establecimiento</label>
+            <input type="text" id="establecimiento_id" name="establecimiento_id" class="form-control" placeholder="Establecimiento">    
+        </div>
+
+
+
+        <div class="form-group">
+            <label for="nombre">Fecha</label>
+            <input type="date" id="Fecha" name="Fecha" class="form-control">    
+        </div>
+
+
+
+        <div class="form-group">
+            <label for="nombre">Hora de inicio</label>
+            <input type="time" id="horaInicio" name="horaInicio" class="form-control">    
+        </div>
+
+
+
+        <div class="form-group">
+            <label for="nombre">Hora de termino</label>
+            <input type="time" id="horaFin" name="horaFin" class="form-control">    
+        </div>
+
+
+        
+        <div class="form-group">
+            <label for="nombre">Observaciones</label>
+            <input type="text" id="Observaciones" name="Observaciones" class="form-control" placeholder="Observaciones">    
+        </div>
+
 
 
         <div class="col-lg-6 col-sm-6 col-md-6 col-xs-12">
@@ -32,7 +69,7 @@
                 <button class="btn btn-danger" type="reset"><i class="fa fa-times" aria-hidden="true"> Cancelar</i></button>
             </div>
         </div>
-        
+
         {!!Form::close()!!}
     </div>
 </div>

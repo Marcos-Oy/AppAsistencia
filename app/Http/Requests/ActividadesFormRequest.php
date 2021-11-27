@@ -25,7 +25,12 @@ class ActividadesFormRequest extends Request
     {
         return [
             'id'=>'max:100|regex:/^([A-Z][a-z]+([ ]?[a-z]?[-]?[A-Z][a-z]+)*)$/',
-            'asiste'=>'required|max:20',
+            'user_id'=>'max:250',
+            'establecimiento_id'=>'max:250',
+            'Fecha'=>'max:250',
+            'horainicio'=>'max:250',
+            'horafin'=>'max:250',
+            'observaciones'=>'max:250',
         ];
     }
 }

@@ -21,13 +21,23 @@
 			<table class="table table-striped table-bordered table-condensed table-hover">
 				<thead>
 					<th>Id</th>
-					<th>ASISTE</th>
+					<th>USUARIO</th>
+					<th>ESTABLECIMIENTO</th>
+					<th>FECHA</th>
+					<th>HORA DE INICIO</th>
+					<th>HORA DE TERMINO</th>
+					<th>OBSERVACIONES</th>
                     <th>ACCIONES</th>
 				</thead>
                @foreach ($actividades as $acti)
 				<tr>
 					<td>{{ $acti->id}}</td>
-					<td>{{ $acti->asiste}}</td>
+					<td>{{ $acti->user_id}}</td>
+					<td>{{ $acti->establecimiento_id}}</td>
+					<td>{{ $acti->Fecha}}</td>
+					<td>{{ $acti->horaInicio}}</td>
+					<td>{{ $acti->horaFin}}</td>
+					<td>{{ $acti->Observaciones}}</td>
 					<td>
 						<a href="{{URL::action('ActividadesController@edit',$acti->id)}}"><button class="btn btn-warning"><i class="fa fa-pencil-square-o" aria-hidden="true"> Editar</i></button></a>
                          <a href="" data-target="#modal-delete-{{$acti->id}}" data-toggle="modal"><button class="btn btn-danger"><i class="fa fa-trash-o" aria-hidden="true"> Eliminar</i></button></a>

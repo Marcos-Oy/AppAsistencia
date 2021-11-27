@@ -26,7 +26,14 @@ class ActividadesController extends Controller
         {
             $query=trim($request->get('searchText'));
             $actividad=DB::table('actividades')
-            ->where('asiste','LIKE','%'.$query.'%')
+            ->select('id', 'user_id', 'establecimiento_id', 'Fecha', 'horaInicio', 'horaFin', 'Observaciones')
+            ->where('id','LIKE','%'.$query.'%')
+            ->where('user_id','LIKE','%'.$query.'%')
+            ->where('establecimiento_id','LIKE','%'.$query.'%')
+            ->where('Fecha','LIKE','%'.$query.'%')
+            ->where('horaInicio','LIKE','%'.$query.'%')
+            ->where('horaFin','LIKE','%'.$query.'%')
+            ->where('Observaciones','LIKE','%'.$query.'%')
             ->orderBy('id','desc')
             ->paginate(7);
             return view('Actividades.index',["actividades"=>$actividad,"searchText"=>$query]);
@@ -42,10 +49,25 @@ class ActividadesController extends Controller
     //insertar datos
     public function store(ActividadesFormRequest $request)
     {
-        $actividad = new Actividades;       
-        $actividad->asiste = $request->get('asiste');
-        $actividad->save();
-        return Redirect::to('Actividades');
+        
+        try{
+            $actividad = new Actividades;       
+            $actividad -> user_id = $request->get('user_id');
+            $actividad -> establecimiento_id = $request->get('establecimiento_id');
+            $actividad -> fecha = $request->get('Fecha');
+            $actividad -> horainicio = $request->get('horaInicio');
+            $actividad -> horafin = $request->get('horaFin');
+            $actividad -> observaciones = $request->get('Observaciones');
+        
+           
+            $actividad -> save();
+            return Redirect::to('Actividades');
+
+        }catch(Exception $e){
+            
+            return $e;
+        
+        }
     }
 
 
@@ -60,8 +82,13 @@ class ActividadesController extends Controller
     public function update(ActividadesFormRequest $request, $id)
     {
         $actividad = Actividades::findOrFail($id);
-        $actividad-> asiste = $request->get('asiste');
-        $actividad->update();
+        $actividad -> user_id = $request->get('user_id');
+        $actividad -> establecimiento_id = $request->get('establecimiento_id');
+        $actividad -> fecha = $request->get('Fecha');
+        $actividad -> horainicio = $request->get('horaInicio');
+        $actividad -> horafin = $request->get('horaFin');
+        $actividad -> observaciones = $request->get('Observaciones');
+        $actividad -> update();
         return Redirect::to('Actividades');
     }
 

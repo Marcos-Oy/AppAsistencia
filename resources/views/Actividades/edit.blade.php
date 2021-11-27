@@ -9,19 +9,103 @@
 
         {!!Form::model($Actividades,['method'=>'PATCH','route'=>['Actividades.update',$Actividades->id]])!!}
         {{Form::token()}}
+
+
+
         <div class="col-lg-12 col-sm-12 col-md-12 col-xs-12">
-            <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
-                <label for="name" class="control-label">Asiste</label>
+            <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">,
+                <label for="name" class="control-label">Usuario</label>
                 
-                    <input id="asiste" type="text" class="form-control" name="asiste" value="{{$Actividades->asiste}}" placeholder="Asiste...">
-                    @if ($errors->has('asiste'))
+                    <input id="user_id" type="text" class="form-control" name="user_id" value="{{$Actividades->user_id}}" placeholder="Usuario">
+                    @if ($errors->has('user_id'))
                     <span class="help-block">
-                        <strong>{{ $errors->first('asiste') }}</strong>
+                        <strong>{{ $errors->first('user_id') }}</strong>
                     </span>
                     @endif
                 
             </div>
         </div>
+
+
+        <div class="col-lg-12 col-sm-12 col-md-12 col-xs-12">
+            <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
+                <label for="name" class="control-label">Establecimiento</label>
+                
+                    <input id="establecimiento_id" type="text" class="form-control" name="establecimiento_id" value="{{$Actividades->establecimiento_id}}" placeholder="Establecimiento">
+                    @if ($errors->has('establecimiento_id'))
+                    <span class="help-block">
+                        <strong>{{ $errors->first('establecimiento_id') }}</strong>
+                    </span>
+                    @endif
+                
+            </div>
+        </div>
+
+
+        <div class="col-lg-12 col-sm-12 col-md-12 col-xs-12">
+            <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
+                <label for="name" class="control-label">Fecha</label>
+                
+                    <input id="fecha" type="date" class="form-control" name="fecha" value="{{$Actividades->Fecha}}">
+                    @if ($errors->has('fecha'))
+                    <span class="help-block">
+                        <strong>{{ $errors->first('fecha') }}</strong>
+                    </span>
+                    @endif
+                
+            </div>
+        </div>
+
+       
+
+
+
+        <div class="col-lg-12 col-sm-12 col-md-12 col-xs-12">
+            <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
+                <label for="name" class="control-label">Hora de Inicio</label>
+                
+                    <input id="horaInicio" type="time" class="form-control" name="horaInicio" value="{{$Actividades->horaInicio}}">
+                    @if ($errors->has('horaInicio'))
+                    <span class="help-block">
+                        <strong>{{ $errors->first('horaInicio') }}</strong>
+                    </span>
+                    @endif
+                
+            </div>
+        </div>
+
+        <div class="col-lg-12 col-sm-12 col-md-12 col-xs-12">
+            <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
+                <label for="name" class="control-label">Hora de termino</label>
+                
+                    <input id="horaFin" type="time" class="form-control" name="horaFin" value="{{$Actividades->horaFin}}">
+                    @if ($errors->has('horaFin'))
+                    <span class="help-block">
+                        <strong>{{ $errors->first('horaFin') }}</strong>
+                    </span>
+                    @endif
+                
+            </div>
+        </div>
+
+
+
+        <div class="col-lg-12 col-sm-12 col-md-12 col-xs-12">
+            <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
+                <label for="name" class="control-label">Observaciones</label>
+                
+                    <input id="observaciones" type="text" class="form-control" name="observaciones" value="{{$Actividades->Observaciones}}" placeholder="Observaciones">
+                    @if ($errors->has('observaciones'))
+                    <span class="help-block">
+                        <strong>{{ $errors->first('observaciones') }}</strong>
+                    </span>
+                    @endif
+                
+            </div>
+        </div>
+
+
+
 
         <div class="col-lg-6 col-sm-6 col-md-6 col-xs-12">
             <div class="form-group">
