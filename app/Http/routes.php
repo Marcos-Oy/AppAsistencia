@@ -24,6 +24,8 @@ Route::get('/home', 'HomeController@index');
 //Route::get('/{slug?}', 'HomeController@index');
 Route::resource('Actividades', 'ActividadesController');
 Route::resource('Establecimiento', 'EstablecimientoController');
+Route::resource('seguridad/usuario', 'UsuarioController');
+Route::resource('Banco', 'BancoController');
 
 
 //REPORTES GENERALES PDF

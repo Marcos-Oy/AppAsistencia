@@ -115,7 +115,7 @@
 
             @if($rol == 'Administrador' || $rol == 'Habilitador'||$rol == 'Docente')
             <li>
-              <a href="{{url('#/#')}}">
+              <a href="{{url('seguridad/usuario')}}">
                 <i class="fa fa-user"></i> <span>Personas</span>
                 <small class="label pull-right bg-blue">Ir</small>
               </a>
@@ -137,7 +137,7 @@
 
             @if($rol == 'Administrador' || $rol == 'Habilitador'||$rol == 'Docente')
             <li>
-              <a href="{{url('#/#')}}">
+              <a href="{{url('Banco')}}">
                 <i class="fa fa-money"></i> <span>Banco</span>
                 <small class="label pull-right bg-blue">Ir</small>
               </a>
