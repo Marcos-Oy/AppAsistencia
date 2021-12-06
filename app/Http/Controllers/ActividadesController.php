@@ -27,13 +27,13 @@ class ActividadesController extends Controller
             $query=trim($request->get('searchText'));
             $actividad=DB::table('actividades')
             ->select('id', 'user_id', 'establecimiento_id', 'Fecha', 'HoraInicio', 'HoraFin', 'Observaciones')
-            ->where('id','LIKE','%'.$query.'%')
-            ->where('user_id','LIKE','%'.$query.'%')
-            ->where('establecimiento_id','LIKE','%'.$query.'%')
-            ->where('Fecha','LIKE','%'.$query.'%')
-            ->where('HoraInicio','LIKE','%'.$query.'%')
-            ->where('HoraFin','LIKE','%'.$query.'%')
-            ->where('Observaciones','LIKE','%'.$query.'%')
+            ->orwhere('id','LIKE','%'.$query.'%')
+            ->orwhere('user_id','LIKE','%'.$query.'%')
+            ->orwhere('establecimiento_id','LIKE','%'.$query.'%')
+            ->orwhere('Fecha','LIKE','%'.$query.'%')
+            ->orwhere('HoraInicio','LIKE','%'.$query.'%')
+            ->orwhere('HoraFin','LIKE','%'.$query.'%')
+            ->orwhere('Observaciones','LIKE','%'.$query.'%')
             ->orderBy('id','desc')
             ->paginate(7);
             return view('Actividades.index',["actividades"=>$actividad,"searchText"=>$query]);

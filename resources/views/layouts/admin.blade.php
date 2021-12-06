@@ -126,7 +126,7 @@
 
             @if($rol == 'Administrador' || $rol == 'Habilitador'||$rol == 'Docente')
             <li>
-              <a href="{{url('#/#')}}">
+              <a href="{{url('Establecimiento')}}">
                 <i class="fa fa-university"></i> <span>Establecimientos</span>
                 <small class="label pull-right bg-blue">Ir</small>
               </a>

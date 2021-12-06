@@ -21,30 +21,13 @@ Route::get('/acerca', function () {
 Route::auth();
 //RTUAS PRINCIPALES
 Route::get('/home', 'HomeController@index');
+//Route::get('/{slug?}', 'HomeController@index');
 Route::resource('Actividades', 'ActividadesController');
-
-
-
-
-
-
-
-//RUTA PARA ACTIVAR
-Route::get('activar{id}', 'ArticuloController@activar');
-
+Route::resource('Establecimiento', 'EstablecimientoController');
 
 
 //REPORTES GENERALES PDF
-Route::get('reportecategorias', 'CategoriaController@reporte');
-Route::get('reportearticulos', 'ArticuloController@reporte');
-Route::get('reporteperdidas', 'PerdidaController@reporte');
-Route::get('reporteclientes', 'ClienteController@reporte');
-Route::get('reporteproveedores', 'ProveedorController@reporte');
-Route::get('reporteventas', 'VentaController@reporte');
-Route::get('reporteventa/{id}', 'VentaController@reportec');
-Route::get('reporteingresos', 'IngresoController@reporte');
-Route::get('reporteingreso/{id}', 'IngresoController@reportec');
-Route::get('reporteusuarios', 'UsuarioController@reporte');
-Route::get('/{slug?}', 'HomeController@index');
+//Route::get('reportecategorias', 'CategoriaController@reporte');
+
 
 
