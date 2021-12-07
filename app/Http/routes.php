@@ -26,6 +26,7 @@ Route::resource('Actividades', 'ActividadesController');
 Route::resource('Establecimiento', 'EstablecimientoController');
 Route::resource('seguridad/usuario', 'UsuarioController');
 Route::resource('Banco', 'BancoController');
+Route::resource('CuentaPago', 'CuentaPagoController');
 
 
 //REPORTES GENERALES PDF

@@ -24,9 +24,11 @@ class BancoFormRequest extends Request
     public function rules()
     {
         return [
-            'nmro_cuenta'=>'max:250',
-            'instituciones_id'=>'max:250',
-            'users_id'=>'max:250',
+            'id'=>'max:100|regex:/^([A-Z][a-z]+([ ]?[a-z]?[-]?[A-Z][a-z]+)*)$/',
+            'tipo'=>'max:250',
+            'codigoSBIF'=>'max:250',
+            'codigoRegistro'=>'max:250',
+            'nombre'=>'max:250',
         ];
     }
 }
