@@ -22,38 +22,59 @@ class ActividadesController extends Controller
     //mostrar y buscar datos
     public function index(Request $request)
     {
-        if ($request)
-        {
+        if ($request) {
             $query=trim($request->get('searchText'));
-            $actividad=DB::table('actividades')
-            ->select('id', 'user_id', 'establecimiento_id', 'Fecha', 'HoraInicio', 'HoraFin', 'Observaciones')
-            ->orwhere('id','LIKE','%'.$query.'%')
-            ->orwhere('user_id','LIKE','%'.$query.'%')
-            ->orwhere('establecimiento_id','LIKE','%'.$query.'%')
-            ->orwhere('Fecha','LIKE','%'.$query.'%')
-            ->orwhere('HoraInicio','LIKE','%'.$query.'%')
-            ->orwhere('HoraFin','LIKE','%'.$query.'%')
-            ->orwhere('Observaciones','LIKE','%'.$query.'%')
-            ->orderBy('id','desc')
+            
+            $f1=trim($request->get('FechaD'));
+            $f2=trim($request->get('FechaH'));
+
+            /*if ($f1 == null || $f2 == null) {
+                $f1 = $f2 = date('Y-m-d');
+            }*/
+
+            $usuarios=DB::table('users')->get();
+            $actividad=DB::table('actividades as a')
+            ->join('users as usu', 'usu.id', '=', 'a.user_id')
+            ->join('establecimiento as b', 'b.idestablecimiento', '=', 'a.establecimiento_id')
+            ->select(
+                'a.id',
+                'a.user_id',
+                'usu.name',
+                'b.descestablecimiento',
+                'a.Fecha',
+                'a.HoraInicio',
+                'a.HoraFin',
+                'a.establecimiento_id',
+                'a.Observaciones'
+            )
+                
+            ->whereBetween('a.Fecha', [$f1, $f2])
+            ->where('usu.id', '=', $query)
+            
+            
+            ->orderBy('Fecha')
+
             ->paginate(7);
-            return view('Actividades.index',["actividades"=>$actividad,"searchText"=>$query]);
+            return view('Actividades.index', ["usuarios"=>$usuarios,"actividades"=>$actividad,"searchText"=>$query,"FechaD" => $f1, "FechaH" => $f2]);
         }
     }
+    
 
     //redirigir a create html
     public function create()
     {
-        return view("Actividades.create");
+        $establecimiento=DB::table('establecimiento')->get();
+        $usuarios=DB::table('users')->get();
+        return view("Actividades.create", ["establecimiento"=>$establecimiento, "usuarios"=>$usuarios]);
     }
 
     //insertar datos
     public function store(ActividadesFormRequest $request)
     {
-        
-        try{
-            $actividad = new Actividades;       
+        try {
+            $actividad = new Actividades;
             $actividad -> user_id = $request->get('user_id');
-            $actividad -> establecimiento_id = $request->get('establecimiento_id');
+            $actividad -> establecimiento_id = $request->get('idestablecimiento');
             $actividad -> Fecha = $request->get('Fecha');
             $actividad -> HoraInicio = $request->get('HoraInicio');
             $actividad -> HoraFin = $request->get('HoraFin');
@@ -62,11 +83,8 @@ class ActividadesController extends Controller
            
             $actividad -> save();
             return Redirect::to('Actividades');
-
-        }catch(Exception $e){
-            
+        } catch (Exception $e) {
             return $e;
-        
         }
     }
 
@@ -74,7 +92,9 @@ class ActividadesController extends Controller
     //rederigir a actividad
     public function edit($id)
     {
-        return view("Actividades.edit", ["Actividades" => Actividades::findOrFail($id)]);
+        $establecimiento=DB::table('establecimiento')->get();
+        $usuarios=DB::table('users')->get();
+        return view("Actividades.edit", ["establecimiento"=>$establecimiento, "usuarios"=>$usuarios, "Actividades" => Actividades::findOrFail($id)]);
     }
 
 
@@ -100,6 +120,4 @@ class ActividadesController extends Controller
         $actividad = DB::table('Actividades')->where('id', '=', $id)->delete();
         return Redirect::to('Actividades');
     }
-
-
 }

@@ -4,7 +4,7 @@ namespace sis_Inventario\Http\Requests;
 
 use sis_Inventario\Http\Requests\Request;
 
-class BancoFormRequest extends Request
+class CuentaPagoFormRequest extends Request
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,11 +24,10 @@ class BancoFormRequest extends Request
     public function rules()
     {
         return [
-            'id'=>'max:100|regex:/^([A-Z][a-z]+([ ]?[a-z]?[-]?[A-Z][a-z]+)*)$/',
-            'tipo'=>'max:250',
-            'codigoSBIF'=>'max:250',
-            'codigoRegistro'=>'max:250',
-            'nombre'=>'max:250',
+            'nmro_cuenta'=>'max:250',
+            'instituciones_id'=>'max:250',
+            'users_id'=>'max:250',
+            'tipo_cuenta'=>'max:250',
         ];
     }
 }

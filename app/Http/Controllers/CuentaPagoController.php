@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 
 use sis_Inventario\Http\Requests;
 
-use sis_Inventario\Banco;
+use sis_Inventario\CuentaPago;
 use Illuminate\Support\Facades\Redirect;
 use sis_Inventario\Http\Requests\CuentaPagoFormRequest;
 use DB;
@@ -22,62 +22,61 @@ class CuentaPagoController extends Controller
     //mostrar y buscar datos
     public function index(Request $request)
     {
-        if ($request)
-        {
+        if ($request) {
+
             $query=trim($request->get('searchText'));
             $cuentapago=DB::table('cuenta_pago as c')
-            ->join('instituciones as i','i.id','=','c.instituciones_id')
-            ->join('users as usu', 'usu.id', '=', 'usu.users_id')
+            ->join('instituciones as i', 'i.id', '=', 'c.instituciones_id')
+            ->join('users as usu', 'usu.id', '=', 'c.users_id')
 
-            ->select('i.id', 'i.tipo', 'i.nombre','c.nmro_cuenta','usu.name', 'usu.role', 'usu.email', 'usu.phone')
+            ->select('c.nmro_cuenta', 'i.id', 'i.tipo', 'i.nombre', 'usu.name', 'usu.role', 'usu.email', 'usu.phone', 'c.tipo_cuenta')
 
-            ->orwhere('i.id','LIKE','%'.$query.'%')
-            ->orwhere('i.tipo','LIKE','%'.$query.'%')
-            ->orwhere('i.nombre','LIKE','%'.$query.'%')
-            ->orwhere('c.nmro_cuenta','LIKE','%'.$query.'%')
-            ->orwhere('usu.name','LIKE','%'.$query.'%')
-            ->orwhere('usu.role','LIKE','%'.$query.'%')
-            ->orwhere('usu.email','LIKE','%'.$query.'%')
-            ->orwhere('usu.phone','LIKE','%'.$query.'%')
+            ->orwhere('i.id', 'LIKE', '%'.$query.'%')
+            ->orwhere('i.tipo', 'LIKE', '%'.$query.'%')
+            ->orwhere('i.nombre', 'LIKE', '%'.$query.'%')
+            ->orwhere('c.nmro_cuenta', 'LIKE', '%'.$query.'%')
+            ->orwhere('usu.name', 'LIKE', '%'.$query.'%')
+            ->orwhere('usu.role', 'LIKE', '%'.$query.'%')
+            ->orwhere('usu.email', 'LIKE', '%'.$query.'%')
+            ->orwhere('usu.phone', 'LIKE', '%'.$query.'%')
+            ->orwhere('c.tipo_cuenta', 'LIKE', '%'.$query.'%')
 
-            ->orderBy('id','desc')
+            ->orderBy('id', 'desc')
             ->paginate(7);
-            return view('CuentaPago.index',["cuentapago"=>$cuentapago,"searchText"=>$query]);
+            return view('CuentaPago.index', ["cuentapago"=>$cuentapago,"searchText"=>$query]);
         }
     }
 
     //redirigir a create html
     public function create()
     {
-        return view("CuentaPago.create");
+        $banco=DB::table('instituciones')->get();
+        $usuarios=DB::table('users')->get();
+        return view("CuentaPago.create", ["banco"=>$banco, "usuarios"=>$usuarios]);
     }
 
     //insertar datos
     public function store(CuentaPagoFormRequest $request)
     {
-        
-        try{
-            $cuentapago = new CuentaPago;       
-            $cuentapago -> tipo = $request->get('tipo');
-            $cuentapago -> codigoSBIF = $request->get('codigoSBIF');
-            $cuentapago -> codigoRegistro = $request->get('codigoRegistro');
-            $cuentapago -> nombre = $request->get('nombre');
-        
+        try {
+            $cuentapago = new CuentaPago;
+            $cuentapago -> nmro_cuenta = $request->get('nmro_cuenta');
+            $cuentapago -> instituciones_id = $request->get('instituciones_id');
+            $cuentapago -> users_id = $request->get('users_id');
+            $cuentapago -> tipo_cuenta = $request->get('tipo_cuenta');
             $cuentapago -> save();
             return Redirect::to('CuentaPago');
-
-        }catch(Exception $e){
-            
+        } catch (Exception $e) {
             return $e;
-        
         }
     }
 
 
-    //rederigir a actividad
+    
     public function edit($id)
     {
-        return view("CuentaPago.edit", ["cuentapago" => CuentaPago::findOrFail($id)]);
+        $cuentapago=CuentaPago::findOrFail($id);
+        return view("CuentaPago.edit", ["cuentapago" => $cuentapago]);
     }
 
 
@@ -85,10 +84,10 @@ class CuentaPagoController extends Controller
     public function update(CuentaPagoFormRequest $request, $id)
     {
         $cuentapago = CuentaPago::findOrFail($id);
-        $cuentapago -> tipo = $request->get('tipo');
-        $cuentapago -> nombre = $request->get('nombre');
-        $cuentapago -> codigoSBIF = $request->get('codigoSBIF');
-        $cuentapago -> codigoRegistro = $request->get('codigoRegistro');
+        $cuentapago -> nmro_cuenta = $request->get('nmro_cuenta');
+        $cuentapago -> instituciones_id = $request->get('instituciones_id');
+        $cuentapago -> users_id = $request->get('users_id');
+        $cuentapago -> tipo_cuenta = $request->get('tipo_cuenta');
         $cuentapago -> update();
         return Redirect::to('CuentaPago');
     }
@@ -98,9 +97,7 @@ class CuentaPagoController extends Controller
     //ELIMINAR DATOS
     public function destroy($id)
     {
-        $cuentapago = DB::table('cuenta_pago')->where('id', '=', $id)->delete();
+        $cuentapago = DB::table('cuenta_pago')->where('nmro_cuenta', '=', $id)->delete();
         return Redirect::to('CuentaPago');
     }
-
-
 }

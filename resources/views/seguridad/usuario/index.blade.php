@@ -21,7 +21,7 @@
 		<div class="table-responsive">
 			<table class="table table-striped table-bordered table-condensed table-hover">
 				<thead>
-					<th>Id</th>
+					<!--<th>Id</th>-->
 					<th>Nombre</th>
 					<th>Rol</th>
 					<th>Correo</th>
@@ -30,14 +30,14 @@
 				</thead>
                @foreach ($usuarios as $usu)
 				<tr>
-					<td>{{ $usu->id}}</td>
+					<!--<td>{{ $usu->id}}</td>-->
 					<td>{{ $usu->name}}</td>
 					<td>{{ $usu->role}}</td>
 					<td>{{ $usu->email}}</td>
 					<td>{{ $usu->phone}}</td>
 					<td>
 						<a href="{{URL::action('UsuarioController@edit',$usu->id)}}"><button class="btn btn-warning"><i class="fa fa-pencil-square-o" aria-hidden="true"> Editar</i></button></a>
-                         <a href="" data-target="#modal-delete-{{$usu->id}}" data-toggle="modal"><button class="btn btn-danger"><i class="fa fa-trash-o" aria-hidden="true"> Eliminar</i></button></a>
+						@if($rol == 'Administrador')     <a href="" data-target="#modal-delete-{{$usu->id}}" data-toggle="modal"><button class="btn btn-danger"><i class="fa fa-trash-o" aria-hidden="true"> Eliminar</i></button></a>@endif
 					</td>
 				</tr>
 				@include('seguridad.usuario.modal')

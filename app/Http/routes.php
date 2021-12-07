@@ -29,8 +29,7 @@ Route::resource('Banco', 'BancoController');
 Route::resource('CuentaPago', 'CuentaPagoController');
 
 
+Route::get('reporteusuarios', 'UsuarioController@reporte');
+
 //REPORTES GENERALES PDF
 //Route::get('reportecategorias', 'CategoriaController@reporte');
-
-
-

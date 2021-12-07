@@ -12,33 +12,27 @@
 
 
 
-        <div class="col-lg-12 col-sm-12 col-md-12 col-xs-12">
-            <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
-                <label for="name" class="control-label">Usuario</label>
-                
-                    <input id="user_id" type="text" class="form-control" name="user_id" value="{{$Actividades->user_id}}" placeholder="Usuario">
-                    @if ($errors->has('user_id'))
-                    <span class="help-block">
-                        <strong>{{ $errors->first('user_id') }}</strong>
-                    </span>
-                    @endif
-                
-            </div>
+        <div class="form-group">
+            <label for="nombre">Usuario</label>
+            <select required name="user_id" id="user_id" class="form-control" data-live-search="true">
+                <option>Seleccionar Usuario</option>
+                @foreach($usuarios as $usu)
+                <option value="{{$usu->id}}">{{$usu->name}}</option>
+                @endforeach
+            </select>
         </div>
 
 
-        <div class="col-lg-12 col-sm-12 col-md-12 col-xs-12">
-            <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
-                <label for="name" class="control-label">Establecimiento</label>
-                
-                    <input id="establecimiento_id" type="text" class="form-control" name="establecimiento_id" value="{{$Actividades->establecimiento_id}}" placeholder="Establecimiento">
-                    @if ($errors->has('establecimiento_id'))
-                    <span class="help-block">
-                        <strong>{{ $errors->first('establecimiento_id') }}</strong>
-                    </span>
-                    @endif
-                
-            </div>
+
+        <div class="form-group">
+            <label for="nombre">Establecimiento</label>
+            <select required name="idestablecimiento" id="idestablecimiento" class="form-control"
+                data-live-search="true">
+                <option>Seleccionar Establecimiento</option>
+                @foreach($establecimiento as $esta)
+                <option value="{{$esta->idestablecimiento}}">{{$esta->descestablecimiento}}</option>
+                @endforeach
+            </select>
         </div>
 
 
@@ -120,7 +114,9 @@
 </script>
 @endpush
 @endif
-@if($rol == 'Operador'|| $rol == 'Gerente'|| $rol == 'Visita')
+
+
+@if($rol == 'Docente'|| $rol == 'Gerente'|| $rol == 'Visita')
     <div class="alert alert-danger text-center" role="alert">
         <h3 class="alert-heading text-center">Acceso Denegado!</h3>
         <hr>

@@ -22,8 +22,12 @@
         {{Form::token()}}
 
         <div class="form-group">
-            <label for="nombre">Nombre</label>
-            <input type="text" id="nombre" name="nombre" class="form-control" placeholder="desc">    
+            <label for="users">Personal</label>
+            <select name="id" id="id" class="form-control" data-live-search="true">
+                @foreach($usuarios as $usu)
+                <option value="{{$usu->id}}">{{$usu->name}}</option>
+                    @endforeach
+                </select>
         </div>
 
 
