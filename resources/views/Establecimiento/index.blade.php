@@ -21,13 +21,13 @@
 		<div class="table-responsive">
 			<table class="table table-striped table-bordered table-condensed table-hover">
 				<thead>
-					<th>IDESTABLECIMIENTO</th>
+
 					<th>DESCRIPCIÓN DEL ESTABLECIMIENTO</th>
 					<th>ACCIONES</th>
 				</thead>
 				@foreach ($establecimiento as $esta)
 				<tr>
-					<td>{{ $esta->idestablecimiento}}</td>
+
 					<td>{{ $esta->descestablecimiento}}</td>
 					<td>
 						<a href="{{URL::action('EstablecimientoController@edit',$esta->idestablecimiento)}}"><button
