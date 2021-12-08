@@ -2,7 +2,7 @@
 @section ('contenido')
 
 <p type="hidden" {{$rol=Auth::user()->role }}></p>
-@if($rol == 'Administrador')
+@if($rol == 'Administrador' || $rol == 'Coordinador')
 <div class="row">
     <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
         <h3>Nuevo Usuario</h3>
@@ -37,8 +37,8 @@
             <div class="form-group">
                 <label>Rol</label>
                 <select name="role" class="form-control" id="role">
-                    <option value="Administrador">Administrador</option>
-                    <option value="Coordinador">Coordinador</option>
+                @if($rol == 'Administrador' )    <option value="Administrador">Administrador</option> @endif
+                @if($rol == 'Administrador' )     <option value="Coordinador">Coordinador</option> @endif
                     <option value="Docente">Docente</option>
                 </select>
             </div>
@@ -116,7 +116,7 @@
 </script>
 @endpush
 @endif
-@if($rol == 'Operador'|| $rol == 'Gerente'|| $rol == 'Visita')
+@if($rol == 'Docente')
 <div class="alert alert-danger text-center" role="alert">
     <h3 class="alert-heading text-center">Acceso Denegado!</h3>
     <hr>

@@ -125,7 +125,7 @@
 
 
 
-          @if($rol == 'Administrador' || $rol == 'Coordinador')
+          @if($rol == 'Administrador' )
           <li>
             <a href="{{url('Establecimiento')}}">
               <i class="fa fa-university"></i> <span>Establecimientos</span>
@@ -136,7 +136,7 @@
 
 
 
-          @if($rol == 'Administrador' || $rol == 'Coordinador')
+          @if($rol == 'Administrador')
           <li>
             <a href="{{url('Banco')}}">
               <i class="fa fa-money"></i> <span>Banco</span>

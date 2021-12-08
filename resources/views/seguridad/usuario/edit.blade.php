@@ -38,9 +38,8 @@
                 <label>Rol</label>
                 <select name="role" class="form-control" id="role" selected->{{$usuario->role}}">
                     <option value="Administrador">Administrador</option>
-                    <option value="Gerente">Gerente</option>
-                    <option value="Operador">Operador</option>
-                    <option value="Visita">Visita</option>
+                    <option value="Coordinador">Coordinador</option>
+                    <option value="Docente">Docente</option>
                 </select>
             </div>
         </div>

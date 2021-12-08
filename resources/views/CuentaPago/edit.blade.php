@@ -13,28 +13,30 @@
 
 
 
-        <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
-            <label for="name" class="control-label">Nombre</label>
+        <div class="col-lg-12 col-sm-12 col-md-12 col-xs-12">
+            <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
+                <label for="name" class="control-label">Número de cuenta</label>
 
-            <input id="nombre" type="text" class="form-control" name="nombre" value="" placeholder="nombre">
+                <input id="HoraInicio" type="time" class="form-control" name="HoraInicio"
+                    value="{{$cuentapago->nmro_cuenta}}">
+                @if ($errors->has('nmro_cuenta'))
+                <span class="help-block">
+                    <strong>{{ $errors->first('nmro_cuenta') }}</strong>
+                </span>
+                @endif
 
-            @if ($errors->has('nombre'))
-            <span class="help-block">
-                <strong>{{ $errors->first('nombre') }}</strong>
-            </span>
-            @endif
+            </div>
         </div>
 
 
-
-        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-            <div class="form-group">
-                <label>Tipo de institución</label>
-                <select name="tipo" class="form-control" id="tipo" selected>"">
-                    <option value="Bancos">Bancos</option>
-                    <option value="Cooperativas de Ahorro y Crédito">Cooperativas de Ahorro y Crédito</option>
-                </select>
-            </div>
+        <div class="form-group">
+            <label for="nombre">Usuario</label>
+            <select required name="user_id" id="user_id" class="form-control" data-live-search="true">
+                <option>Seleccionar Usuario</option>
+                @foreach($usuarios as $usu)
+                <option value="{{$usu->id}}">{{$usu->name}}</option>
+                @endforeach
+            </select>
         </div>
 
 

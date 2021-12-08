@@ -28,11 +28,15 @@ class ActividadesController extends Controller
             $f1=trim($request->get('FechaD'));
             $f2=trim($request->get('FechaH'));
 
-            /*if ($f1 == null || $f2 == null) {
-                $f1 = $f2 = date('Y-m-d');
-            }*/
+            
+            
+            
+                                    
+            
 
             $usuarios=DB::table('users')->get();
+
+            
             $actividad=DB::table('actividades as a')
             ->join('users as usu', 'usu.id', '=', 'a.user_id')
             ->join('establecimiento as b', 'b.idestablecimiento', '=', 'a.establecimiento_id')
@@ -47,14 +51,23 @@ class ActividadesController extends Controller
                 'a.establecimiento_id',
                 'a.Observaciones'
             )
-                
+
             ->whereBetween('a.Fecha', [$f1, $f2])
             ->where('usu.id', '=', $query)
-            
-            
+
+
             ->orderBy('Fecha')
 
+            
             ->paginate(7);
+            $actividad2=DB::table('actividades as a')
+            ->select(
+                'u.name',
+                'ROUND(sum(TIME_TO_SEC(timediff(horafin,horainicio)))/60/60) as HORAS'
+            )
+            ->join('users u', 'u.id', '=', 'a.user_id')
+            ->where('u.id', '=', $query)
+            ->groupBy('u.name');
             return view('Actividades.index', ["usuarios"=>$usuarios,"actividades"=>$actividad,"searchText"=>$query,"FechaD" => $f1, "FechaH" => $f2]);
         }
     }

@@ -2,11 +2,11 @@
 @section ('contenido')
 
 <p type="hidden" {{$rol = Auth::user()->role }}></p>
-@if($rol == 'Administrador')
+@if($rol == 'Administrador' || $rol == 'Coordinador')
 <div class="row">
 	<div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
 		<h3>Listado de Usuarios
-			@if($rol == 'Administrador')	 
+			@if($rol == 'Administrador'|| $rol == 'Coordinador')	 
 				<a href="usuario/create"><button class="btn btn-success"><i class="fa fa-plus" aria-hidden="true"> Nuevo</i></button></a>
 				<a href="{{url('reporteusuarios')}}" target="_blank"><button class="btn btn-info"><i class="fa fa-book" aria-hidden="true"> Reportes</i></button></a>
 			@endif
@@ -36,8 +36,15 @@
 					<td>{{ $usu->email}}</td>
 					<td>{{ $usu->phone}}</td>
 					<td>
-						<a href="{{URL::action('UsuarioController@edit',$usu->id)}}"><button class="btn btn-warning"><i class="fa fa-pencil-square-o" aria-hidden="true"> Editar</i></button></a>
-						@if($rol == 'Administrador')     <a href="" data-target="#modal-delete-{{$usu->id}}" data-toggle="modal"><button class="btn btn-danger"><i class="fa fa-trash-o" aria-hidden="true"> Eliminar</i></button></a>@endif
+						@if($rol == 'Administrador')
+							<a href="{{URL::action('UsuarioController@edit',$usu->id)}}"><button class="btn btn-warning"><i class="fa fa-pencil-square-o" aria-hidden="true"> Editar</i></button></a>
+							<a href="" data-target="#modal-delete-{{$usu->id}}" data-toggle="modal"><button class="btn btn-danger"><i class="fa fa-trash-o" aria-hidden="true"> Eliminar</i></button></a>
+							
+						@endif
+						@if($rol == 'Coordinador')
+							<a href="{{URL::action('UsuarioController@edit',$usu->id)}}"><button class="btn btn-warning"><i class="fa fa-pencil-square-o" aria-hidden="true"> Editar</i></button></a>
+							
+						@endif
 					</td>
 				</tr>
 				@include('seguridad.usuario.modal')

@@ -23,7 +23,6 @@ class CuentaPagoController extends Controller
     public function index(Request $request)
     {
         if ($request) {
-
             $query=trim($request->get('searchText'));
             $cuentapago=DB::table('cuenta_pago as c')
             ->join('instituciones as i', 'i.id', '=', 'c.instituciones_id')
@@ -76,7 +75,8 @@ class CuentaPagoController extends Controller
     public function edit($id)
     {
         $cuentapago=CuentaPago::findOrFail($id);
-        return view("CuentaPago.edit", ["cuentapago" => $cuentapago]);
+        $usuarios=DB::table('users')->get();
+        return view("CuentaPago.edit", ["cuentapago" => $cuentapago, "usuarios"=>$usuarios]);
     }
 
 
