@@ -21,27 +21,6 @@
 		<div class="table-responsive">
 			<table class="table table-striped table-bordered table-condensed table-hover">
 				<thead>
-					<th>TOTAL HORAS</th>
-				</thead>
-
-				@foreach ($actividades2 as $acti2)
-				<tr>
-					<td>{{ $acti2->HORAS }}</td>
-				</tr>
-				@endforeach
-			</table>
-		</div>
-		{{$actividades->render()}}
-	</div>
-</div>
-
-
-
-<div class="row">
-	<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-		<div class="table-responsive">
-			<table class="table table-striped table-bordered table-condensed table-hover">
-				<thead>
 					<th>USUARIO</th>
 					<th>ESTABLECIMIENTO</th>
 					<th>FECHA</th>
